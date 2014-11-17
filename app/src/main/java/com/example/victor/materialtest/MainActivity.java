@@ -6,12 +6,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.AdapterView;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.content.Context;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import android.graphics.Color;
 
 
 public class MainActivity extends Activity {
@@ -31,6 +34,7 @@ public class MainActivity extends Activity {
         }
         final StableArrayAdapter adapter = new StableArrayAdapter(this,
                 android.R.layout.simple_list_item_1, list);
+
         listview.setAdapter(adapter);
     }
 
@@ -80,6 +84,13 @@ public class MainActivity extends Activity {
             return true;
         }
 
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = super.getView(position, convertView, parent);
+            TextView text = (TextView) view.findViewById(android.R.id.text1);
+            text.setTextColor(Color.parseColor("#263238"));
+            return view;
+        }
     }
 
 }
