@@ -13,6 +13,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import java.util.ArrayList;
 import java.util.Arrays;
+import android.content.Intent;
 
 
 public class MainActivity extends Activity {
@@ -53,6 +54,11 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void switchActivity(View view) {
+        Intent intent = new Intent(this, RecyclerViewActivity.class);
+        startActivity(intent);
     }
 
     private class MyAdapter extends ArrayAdapter<String> {
