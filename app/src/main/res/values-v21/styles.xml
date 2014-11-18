@@ -7,6 +7,6 @@
         <item name="android:textColorPrimary">@color/white</item>
     </style>
     <color name="blue">#2196F3</color>
-    <color name="dark_blue">#0D47A1</color>
+    <color name="dark_blue">#1976D2</color>
     <color name="white">#FFFFFF</color>
 </resources>
