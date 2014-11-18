@@ -7,13 +7,33 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RecyclerViewActivity extends Activity {
+
+    private RecyclerView mRecyclerView;
+    private MyViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
+
+        mRecyclerView = (RecyclerView)findViewById(R.id.list);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        final ArrayList<String> list = new ArrayList<String>(
+            Arrays.asList("Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7", "Mac OS X", "Oviedo")
+        );
+
+        mAdapter = new MyViewAdapter(list, R.layout.row_card, this);
+        mRecyclerView.setAdapter(mAdapter);
     }
 
 
