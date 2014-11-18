@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.example.victor.materialtest.RecyclerViewActivity"
+            android:label="@string/title_activity_recycler_view" >
+        </activity>
     </application>
 
 </manifest>
