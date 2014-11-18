@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class MainActivity extends Activity {
@@ -22,13 +23,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         final ListView listview = (ListView) findViewById(R.id.listview);
-        String[] values = new String[] { "Android", "iPhone", "WindowsMobile", "Blackberry",
-                "WebOS", "Ubuntu", "Windows7", "Mac OS X" };
 
-        final ArrayList<String> list = new ArrayList<String>();
-        for (int i = 0; i < values.length; ++i) {
-            list.add(values[i]);
-        }
+        final ArrayList<String> list = new ArrayList<String>(
+            Arrays.asList("Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7", "Mac OS X", "Oviedo")
+        );
 
         final MyAdapter adapter = new MyAdapter(this, list);
         listview.setAdapter(adapter);
