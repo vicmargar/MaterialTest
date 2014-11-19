@@ -12,12 +12,11 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
-public class RecyclerViewActivity extends Activity {
+public class RecyclerViewActivity extends Activity implements DisplayableList{
 
     private RecyclerView mRecyclerView;
-    private MyViewAdapter mAdapter;
+    private RecyclerViewAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,14 +27,13 @@ public class RecyclerViewActivity extends Activity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        final ArrayList<String> list = new ArrayList<String>(
-            Arrays.asList("Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7", "Mac OS X", "Oviedo")
-        );
-
-        mAdapter = new MyViewAdapter(list, R.layout.row_card, this);
-        mRecyclerView.setAdapter(mAdapter);
+        new BackgroundList(this).execute();
     }
 
+    public void displayList(ArrayList list) {
+        mAdapter = new RecyclerViewAdapter(list, R.layout.row_card, this);
+        mRecyclerView.setAdapter(mAdapter);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

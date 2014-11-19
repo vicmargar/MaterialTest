@@ -9,12 +9,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class MyViewAdapter extends RecyclerView.Adapter<MyViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
     private ArrayList<String> list;
     private int rowLayout;
 
-    public MyViewAdapter(ArrayList<String> list, int rowLayout, Context context) {
+    public RecyclerViewAdapter(ArrayList<String> list, int rowLayout, Context context) {
         this.list = list;
         this.rowLayout = rowLayout;
     }

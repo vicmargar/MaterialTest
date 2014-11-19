@@ -12,27 +12,26 @@ import android.widget.ArrayAdapter;
 import android.content.Context;
 import android.view.LayoutInflater;
 import java.util.ArrayList;
-import java.util.Arrays;
 import android.content.Intent;
 
+public class MainActivity extends Activity implements DisplayableList {
 
-public class MainActivity extends Activity {
+    private ListView listview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ListView listview = (ListView) findViewById(R.id.listview);
+        listview = (ListView) findViewById(R.id.listview);
 
-        final ArrayList<String> list = new ArrayList<String>(
-            Arrays.asList("Android", "iPhone", "WindowsMobile", "Blackberry", "WebOS", "Ubuntu", "Windows7", "Mac OS X", "Oviedo")
-        );
+        new BackgroundList(this).execute();
+    }
 
+    public void displayList(ArrayList list) {
         final MyAdapter adapter = new MyAdapter(this, list);
         listview.setAdapter(adapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
