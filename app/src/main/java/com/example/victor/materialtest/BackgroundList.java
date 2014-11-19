@@ -15,6 +15,24 @@ public class BackgroundList extends AsyncTask<Void, Void, ArrayList> {
         activity = a;
     }
 
+    protected ArrayList<String> doInBackground(Void... params) {
+        ArrayList <String> items = this.loadFromJSON();
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            // don't know
+        }
+
+        return items;
+    }
+
+    protected void onProgressUpdate(Void... params) {}
+
+    protected void onPostExecute(ArrayList result) {
+        activity.displayList(result);
+    }
+
     private ArrayList<String> loadFromJSON() {
         String json = AssetUtil.loadJSON((Activity) activity, "items.json");
         ArrayList<String> list = new ArrayList<String>();
@@ -33,23 +51,5 @@ public class BackgroundList extends AsyncTask<Void, Void, ArrayList> {
             System.out.println( "Error: " + je.toString());
         }
         return list;
-    }
-
-    protected ArrayList<String> doInBackground(Void... params) {
-        ArrayList <String> items = loadFromJSON();
-
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            // don't know
-        }
-
-        return items;
-    }
-
-    protected void onProgressUpdate(Void... params) {}
-
-    protected void onPostExecute(ArrayList result) {
-        activity.displayList(result);
     }
 }
